@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Rainfall Prediction</title>
+    <style>
+      .login {
+        width: 400px;
+        margin: 80px auto;
+        padding: 30px;
+        background: transparent;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      }
+      .label {
+        color: gray;
+      }
+      button {
+        height: 35px;
+        width: 200px;
+        text-align: center;
+        font-size: 16px;
+        background-color: #2c3e50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #34495e;
+      }
+      table td {
+        padding: 8px;
+      }
+      input,
+      select {
+        padding: 6px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      background-image: url(&quot;/static/images/cloudy.jpg&quot;);
+      background-size: cover;
+      color: black;
+    "
+  >
+    <div class="login">
+      <center>
+        <h1>Rainfall Prediction</h1>
+      </center>
+      <form action="{{ url_for('predict') }}" method="post">
+        <table style="width: 100%">
+          <tr>
+            <td>
+              <label for="Location"><b>Location:</b></label>
+            </td>
+            <td>
+              <select
+                id="Location"
+                name="Location"
+                required
+                style="width: 100%"
+              >
+                <option value="">Select Location</option>
+                <option value="Albury">Albury</option>
+                <option value="BadgerysCreek">BadgerysCreek</option>
+                <option value="Cobar">Cobar</option>
+                <option value="CoffsHarbour">CoffsHarbour</option>
+                <option value="Moree">Moree</option>
+                <option value="Newcastle">Newcastle</option>
+                <option value="NorahHead">NorahHead</option>
+                <option value="NorfolkIsland">NorfolkIsland</option>
+                <option value="Penrith">Penrith</option>
+                <option value="Richmond">Richmond</option>
+                <option value="Sydney">Sydney</option>
+                <option value="SydneyAirport">SydneyAirport</option>
+                <option value="WaggaWagga">WaggaWagga</option>
+                <option value="Williamtown">Williamtown</option>
+                <option value="Wollongong">Wollongong</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="WindDir3pm"><b>Wind Direction:</b></label>
+            </td>
+            <td>
+              <select
+                id="WindDir3pm"
+                name="WindDir3pm"
+                required
+                style="width: 100%"
+              >
+                <option value="">Select Direction</option>
+                <option value="N">N</option>
+                <option value="NNE">NNE</option>
+                <option value="NE">NE</option>
+                <option value="ENE">ENE</option>
+                <option value="E">E</option>
+                <option value="ESE">ESE</option>
+                <option value="SE">SE</option>
+                <option value="SSE">SSE</option>
+                <option value="S">S</option>
+                <option value="SSW">SSW</option>
+                <option value="SW">SW</option>
+                <option value="WSW">WSW</option>
+                <option value="W">W</option>
+                <option value="WNW">WNW</option>
+                <option value="NW">NW</option>
+                <option value="NNW">NNW</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Min Temperature:</b></label>
+            </td>
+            <td>
+              <input
+                type="number"
+                step="any"
+                name="MinTemp"
+                required
+                style="width: 94%"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Max Temperature:</b></label>
+            </td>
+            <td>
+              <input
+                type="number"
+                step="any"
+                name="MaxTemp"
+                required
+                style="width: 94%"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label><b>Humidity :</b></label>
+            </td>
+            <td>
+              <input
+                type="number"
+                step="any"
+                name="Humidity3pm"
+                required
+                style="width: 94%"
+              />
+            </td>
+          </tr>
+        </table>
+        <br />
+        <div style="text-align: center">
+          <button type="submit">Predict</button>
+        </div>
+      </form>
+      <br />
+      <h3>{{ prediction_text }}</h3>
+    </div>
+  </body>
+</html>
