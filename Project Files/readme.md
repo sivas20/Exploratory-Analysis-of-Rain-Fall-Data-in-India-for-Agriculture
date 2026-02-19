@@ -16,6 +16,7 @@ Model (.pkl) files are not included due to size limitations.
    - scale.pkl
 3. After model files are created,  Then add thise files into
    your flask project folder where place under app.py.
+
 4.Now run the code :
 python app.py
 
